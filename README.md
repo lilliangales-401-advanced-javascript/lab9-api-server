@@ -8,6 +8,7 @@
 * [submission PR](https://github.com/lilliangales-401-advanced-javascript/lab8-routing-api/pull/1)
 * [travis](https://travis-ci.com/lilliangales-401-advanced-javascript/lab8-routing-api)
 * [front-end](https://lillian-lab8.herokuapp.com/) 
+* [docs](http://localhost:3003/docs/)
 
 
  ##### Exported Values and Methods

@@ -9,4 +9,9 @@ const mongooseOptions = {
 };
 mongoose.connect(process.env.MONGODB_URI, mongooseOptions);
 
+/**
+ * Start Server on specified port
+ * @param port {integer} (defaults to process.env.PORT)
+ */
+
 require('./src/app.js').start(process.env.PORT);
