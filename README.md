@@ -5,9 +5,9 @@
  ### Author: Lillian Gales
 
  ### Links and Resources
-* [submission PR](https://github.com/lilliangales-401-advanced-javascript/lab8-routing-api/pull/1)
-* [travis](https://travis-ci.com/lilliangales-401-advanced-javascript/lab8-routing-api)
-* [front-end](https://lillian-lab8.herokuapp.com/) 
+* [submission PR](https://github.com/lilliangales-401-advanced-javascript/lab9-api-server/pull/1)
+* [travis](https://travis-ci.com/lilliangales-401-advanced-javascript/lab9-api-server)
+* [front-end](https://lab9-lillian.herokuapp.com/) 
 * [docs](http://localhost:3003/docs/)
 
 
