@@ -10,6 +10,14 @@ const router = express.Router();
 
 router.param('model', modelFinder.load);
 
+/**
+ * Get a list of records for a given model
+ * Model must be a proper model, located within the ../models folder
+ * @route GET /posts
+ * @returns {object} 200 { count: 2, results: [ {}, {} ] }
+ * @returns {Error}  500 - Server error
+ */
+
 router.get('/api/v1/models', (request, response) => {
   modelFinder.list()
     .then(models => response.status(200).json(models));

@@ -14,10 +14,10 @@
  ##### Exported Values and Methods
 
  ###### 
-`get(product) -> promise`
-`post(product) -> promise`
-`put(product) -> promise`
-`delete(product) -> promise`
+`get(category) -> promise`
+`post(category) -> promise`
+`put(category) -> promise`
+`delete(category) -> promise`
 
  `get(product) -> promise`
 `post(product) -> promise`
@@ -26,8 +26,8 @@
 
  ### Setup
 #### `.env` requirements
-* `PORT` - 3000
+* `PORT` - 3003
 
 
  #### UML
-![UML](IMG_2533.jpg)
+![UML](IMG_2538.jpg)
