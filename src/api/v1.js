@@ -35,6 +35,12 @@ router.put('/api/v1/:model/:id', handlePut);
 router.delete('/api/v1/:model/:id', handleDelete);
 
 // Route Handlers
+/**
+ *
+ * @param request
+ * @param response
+ * @param next
+ */
 function handleGetAll(request,response,next) {
   request.model.get()
     .then( data => {
@@ -47,24 +53,48 @@ function handleGetAll(request,response,next) {
     .catch( next );
 }
 
+/**
+ *
+ * @param request
+ * @param response
+ * @param next
+ */
 function handleGetOne(request,response,next) {
   request.model.get(request.params.id)
     .then( result => response.status(200).json(result[0]) )
     .catch( next );
 }
 
+/**
+ *
+ * @param request
+ * @param response
+ * @param next
+ */
 function handlePost(request,response,next) {
   request.model.create(request.body)
     .then( result => response.status(200).json(result) )
     .catch( next );
 }
 
+/**
+ *
+ * @param request
+ * @param response
+ * @param next
+ */
 function handlePut(request,response,next) {
   request.model.update(request.params.id, request.body)
     .then( result => response.status(200).json(result) )
     .catch( next );
 }
 
+/**
+ *
+ * @param request
+ * @param response
+ * @param next
+ */
 function handleDelete(request,response,next) {
   request.model.delete(request.params.id)
     .then( result => response.status(200).json(result) )
