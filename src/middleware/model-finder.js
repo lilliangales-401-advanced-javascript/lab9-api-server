@@ -6,11 +6,11 @@ const readdir = util.promisify(fs.readdir);
 const modelsFolder = `${__dirname}/../models`;
 
 /**
- *
+ * @function
+ * @name load
  * @param req
  * @param res
  * @param next
- * @function load
  */
 const load = (req,res,next) => {
   let modelName = req.params.model.replace(/[^a-z0-9-_]/gi, '');
@@ -20,7 +20,11 @@ const load = (req,res,next) => {
 };
 
 /**
- *@function list
+ *@function 
+ *@name list
+ * @param req
+ * @param res
+ * @param next
  * @returns {Promise<T | void>}
  */
 const list = () => {

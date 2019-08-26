@@ -13,11 +13,21 @@ class Model {
       : {};
   }
 
+  /**
+   *
+   * @param _id
+   * @returns {*}
+   */
   get(_id) {
     let queryObject = _id ? { _id } : {};
     return this.schema.find(queryObject);
   }
 
+  /**
+   *
+   * @param record
+   * @returns {Promise|void|*}
+   */
   create(record) {
     console.log('r',record);
     let newRecord = new this.schema(record);
@@ -25,10 +35,21 @@ class Model {
     return newRecord.save();
   }
 
+  /**
+   *
+   * @param _id
+   * @param record
+   * @returns {Query}
+   */
   update(_id, record) {
     return this.schema.findByIdAndUpdate(_id, record, { new: true });
   }
 
+  /**
+   *
+   * @param _id
+   * @returns {Query}
+   */
   delete(_id) {
     return this.schema.findByIdAndDelete(_id);
   }
