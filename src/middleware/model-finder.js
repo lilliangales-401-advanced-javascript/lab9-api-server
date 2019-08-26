@@ -20,8 +20,11 @@ const load = (req,res,next) => {
 };
 
 /**
- * @function
- * @name list
+ *@function 
+ *@name list
+ * @param req
+ * @param res
+ * @param next
  * @returns {Promise<T | void>}
  */
 const list = () => {
