@@ -1,8 +1,11 @@
 'use strict';
 
+
 /**
  * Function that responds with a 500 error
  * @function
+/**
+ *
  * @param err
  * @param req
  * @param res

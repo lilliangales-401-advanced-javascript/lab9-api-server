@@ -1,5 +1,6 @@
 'use strict';
 
+
 /**
  * Function that generates 404 error response
  * @function
