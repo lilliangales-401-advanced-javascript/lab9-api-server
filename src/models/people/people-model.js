@@ -3,6 +3,18 @@
 const DataModel = require('../memory.js');
 
 
+/**
+ *
+ * People model.
+ * @module src/models/people/people-model
+ */
+
+
+
+/**
+ * @class
+ * @constructor
+ */
 class People extends DataModel {
 
   /**

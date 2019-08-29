@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: src/middleware/model-finder.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,64 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: src/middleware/model-finder.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use strict';
+const fs = require('fs');
+const util = require('util');
+const readdir = util.promisify(fs.readdir);
 
+/**
+ *
+ * Model finder module.
+ * @module src/middleware/model-finder
+ */
 
-    <h3> </h3>
+const modelsFolder = `${__dirname}/../models`;
 
+/**
+ * @function
+ * @name load
+ * @param req {object} (request object)
+ * @param res {object} (response object)
+ * @param next {object} (next object)
+ */
+const load = (req,res,next) => {
+  let modelName = req.params.model.replace(/[^a-z0-9-_]/gi, '');
+  const Model = require(`../models/${modelName}/${modelName}-model.js`);
+  req.model = new Model();
+  next();
+};
 
+/**
+ *@function 
+ *@name list
+ * @param req {object} (request object)
+ * @param res {object} (response object)
+ * @param next {object} (next object)
+ * @returns {Promise&lt;T | void>}
+ */
+const list = () => {
+  return readdir(modelsFolder)
+    .then(contents =>
+      contents.filter((entry) =>
+        fs.lstatSync(`${modelsFolder}/${entry}`).isDirectory() &amp;&amp; fs.statSync(`${modelsFolder}/${entry}/${entry}-model.js`)
+      )
+    )
+    .catch(console.error);
+};
 
-
-
-
-
-
-
-
-    
-
-
-
-
-
+module.exports = {load,list};
+</code></pre>
+        </article>
+    </section>
 
 
 

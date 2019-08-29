@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: src/models/people/people-model.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,65 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: src/models/people/people-model.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use strict';
+
+const DataModel = require('../memory.js');
 
 
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
+/**
+ *
+ * People model.
+ * @module src/models/people/people-model
+ */
 
 
 
+/**
+ * @class
+ * @constructor
+ */
+class People extends DataModel {
 
+  /**
+   *
+   * @returns {{firstName: {type: string, required: boolean}, lastName: {type: string, required: boolean}, id: {type: string, required: boolean}, age: {type: string, required: boolean}}}
+   */
+  schema() {
+    return {
+      id: { required: true, type: 'string' },
+      firstName: { required: true, type: 'string' },
+      lastName: { required: true, type: 'string' },
+      age: { required: true, type: 'number' },
+    };
+  }
+
+  /**
+   *
+   * @returns {{firstName: string, lastName: string, age: number}}
+   */
+  static sampleRecord() {
+    return {
+      'firstName': 'Test',
+      'lastName': 'User',
+      'age': 50,
+    };
+  }
+
+}
+
+module.exports = People;
+</code></pre>
+        </article>
+    </section>
 
 
 

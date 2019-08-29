@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: src/middleware/500.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,38 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: src/middleware/500.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use strict';
+
+/**
+ *
+ * Internal server error module.
+ * @module src/middleware/500
+ */
 
 
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+/**
+ *
+ * @param err {object} (error object)
+ * @param req {object} (request object)
+ * @param res {object} (response object)
+ * @param next {object} (next object)
+ */
+module.exports = (err, req, res, next) => {
+  let error = { error: err };
+  res.status(500).json(error).end();
+};
+</code></pre>
+        </article>
+    </section>
 
 
 

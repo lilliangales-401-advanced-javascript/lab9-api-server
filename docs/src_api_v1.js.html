@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: src/app.js</title>
+    <title>JSDoc: Source: src/api/v1.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: src/app.js</h1>
+    <h1 class="page-title">Source: src/api/v1.js</h1>
 
     
 
@@ -28,56 +28,108 @@
         <article>
             <pre class="prettyprint source linenums"><code>'use strict';
 
-/**
- * API Server Module
- * @module src/app
- */
-
 const cwd = process.cwd();
 
-// 3rd Party Resources
 const express = require('express');
-const cors = require('cors');
-const morgan = require('morgan');
 
-// Esoteric Resources
-const errorHandler = require( `${cwd}/src/middleware/500.js`);
-const notFound = require( `${cwd}/src/middleware/404.js` );
-const v1Router = require( `${cwd}/src/api/v1.js` );
-const swagger = require(`${cwd}/src/api/swagger.js`);
+const modelFinder = require(`${cwd}/src/middleware/model-finder.js`);
 
-// Prepare the express app
-const app = express();
+const router = express.Router();
 
-// App Level MW
-app.use(cors());
-app.use(morgan('dev'));
-
-app.use(express.json());
-app.use(express.urlencoded({extended:true}));
-
-// Static Routes
-app.use('/docs', express.static('docs'));
-
-// Routes
-app.use(v1Router);
-
-// Catchalls
-app.use(notFound);
-app.use(errorHandler);
+router.param('model', modelFinder.load);
 
 /**
- * Start Server on specified port
- * @param port {integer} (defaults to process.env.PORT)
+ * Get a list of records for a given model
+ * Model must be a proper model, located within the ../models folder
+ * @route GET /posts
+ * @returns {object} 200 { count: 2, results: [ {}, {} ] }
+ * @returns {Error}  500 - Server error
  */
 
-let start = (port = process.env.PORT) => {
-  app.listen(port, () => {
-    console.log(`Server Up on ${port}`);
-  });
-};
+router.get('/api/v1/models', (request, response) => {
+  modelFinder.list()
+    .then(models => response.status(200).json(models));
+});
 
-module.exports = {app,start};
+router.get('/api/v1/:model/schema', (request, response) => {
+  response.status(200).json(request.model.jsonSchema());
+});
+
+
+router.get('/api/v1/:model', handleGetAll);
+router.post('/api/v1/:model', handlePost);
+router.get('/api/v1/:model/:id', handleGetOne);
+router.put('/api/v1/:model/:id', handlePut);
+router.delete('/api/v1/:model/:id', handleDelete);
+
+// Route Handlers
+/**
+ *
+ * @param request
+ * @param response
+ * @param next
+ */
+function handleGetAll(request,response,next) {
+  request.model.get()
+    .then( data => {
+      const output = {
+        count: data.length,
+        results: data,
+      };
+      response.status(200).json(output);
+    })
+    .catch( next );
+}
+
+/**
+ *
+ * @param request
+ * @param response
+ * @param next
+ */
+function handleGetOne(request,response,next) {
+  request.model.get(request.params.id)
+    .then( result => response.status(200).json(result[0]) )
+    .catch( next );
+}
+
+/**
+ *
+ * @param request
+ * @param response
+ * @param next
+ */
+function handlePost(request,response,next) {
+  request.model.create(request.body)
+    .then( result => response.status(200).json(result) )
+    .catch( next );
+}
+
+/**
+ *
+ * @param request
+ * @param response
+ * @param next
+ */
+function handlePut(request,response,next) {
+  request.model.update(request.params.id, request.body)
+    .then( result => response.status(200).json(result) )
+    .catch( next );
+}
+
+/**
+ *
+ * @param request
+ * @param response
+ * @param next
+ */
+function handleDelete(request,response,next) {
+  request.model.delete(request.params.id)
+    .then( result => response.status(200).json(result) )
+    .catch( next );
+}
+
+module.exports = router;
 </code></pre>
         </article>
     </section>

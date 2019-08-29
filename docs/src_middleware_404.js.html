@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: src/middleware/404.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,38 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: src/middleware/404.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use strict';
 
 
-    <h3> </h3>
+/**
+ *
+ * Not Found Error response module.
+ * @module src/middleware/404
+ */
 
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+/**
+ * Function that generates 404 error response
+ * @function
+ * @param req {object} (request object)
+ * @param res {object} (response object)
+ * @param next {object} (next object)
+ */
+module.exports = (req,res,next) => {
+  let error = { error: 'Resource Not Found' };
+  res.status(404).json(error).end();
+};
+</code></pre>
+        </article>
+    </section>
 
 
 
