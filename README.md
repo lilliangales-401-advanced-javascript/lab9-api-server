@@ -8,7 +8,7 @@
 * [submission PR](https://github.com/lilliangales-401-advanced-javascript/lab9-api-server/pull/1)
 * [travis](https://travis-ci.com/lilliangales-401-advanced-javascript/lab9-api-server)
 * [front-end](https://lab9-lillian.herokuapp.com/) 
-* [docs](http://localhost:3003/docs/)
+* [docs](https://lab9-lillian.herokuapp.com/docs)
 
 
  ##### Exported Values and Methods

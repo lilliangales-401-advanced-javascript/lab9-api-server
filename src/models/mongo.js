@@ -19,6 +19,7 @@ class Model {
    * @returns {*}
    */
   get(_id) {
+    console.log(this);
     let queryObject = _id ? { _id } : {};
     return this.schema.find(queryObject);
   }
