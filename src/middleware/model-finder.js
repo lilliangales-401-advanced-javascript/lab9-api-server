@@ -3,14 +3,20 @@ const fs = require('fs');
 const util = require('util');
 const readdir = util.promisify(fs.readdir);
 
+/**
+ *
+ * Model finder module.
+ * @module src/middleware/model-finder
+ */
+
 const modelsFolder = `${__dirname}/../models`;
 
 /**
  * @function
  * @name load
- * @param req
- * @param res
- * @param next
+ * @param req {object} (request object)
+ * @param res {object} (response object)
+ * @param next {object} (next object)
  */
 const load = (req,res,next) => {
   let modelName = req.params.model.replace(/[^a-z0-9-_]/gi, '');
@@ -22,9 +28,9 @@ const load = (req,res,next) => {
 /**
  *@function 
  *@name list
- * @param req
- * @param res
- * @param next
+ * @param req {object} (request object)
+ * @param res {object} (response object)
+ * @param next {object} (next object)
  * @returns {Promise<T | void>}
  */
 const list = () => {

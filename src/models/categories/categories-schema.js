@@ -1,7 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
-
+require('../todo/todo-model.js');
 
 const categories = mongoose.Schema({
   name: { type: String, required: true },

@@ -142,6 +142,7 @@ describe('Categories API', () => {
     return mockRequest.post('/api/v1/categories')
       .send(testProduct)
       .then(response => {
+        console.log('RESPONEEEEEE',response.body._id);
         return mockRequest.get(`/api/v1/categories/${response.body._id}`)
           .then(savedProduct => {
             Object.keys(testProduct).forEach(key =>{

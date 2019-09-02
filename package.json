@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "lint": "eslint **/*.js",
+    "lint": "eslint \"**/*.js\"",
     "jsdoc": "jsdoc -c ./docs/config/jsdoc.config.json",
     "test": "jest --verbose",
     "test-watch": "jest --watchAll --verbose"
@@ -18,20 +18,18 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^8.0.0",
-    "eslint": "^6.2.2",
+    "dotenv": "^8.1.0",
+    "eslint": "^6.3.0",
     "express": "^4.17.1",
+    "express-swagger-generator": "^1.1.15",
     "jest": "^24.8.0",
     "jsdoc": "^3.6.3",
     "mongodb-memory-server": "^5.1.5",
-    "mongoose": "^5.6.2",
+    "mongoose": "^5.6.11",
     "mongoose-schema-jsonschema": "^1.2.1",
     "morgan": "^1.9.1",
     "require-directory": "^2.1.1",
     "supertest": "^4.0.2",
     "uuid": "^3.3.2"
-  },
-  "devDependencies": {
-    "express-swagger-generator": "^1.1.15"
   }
 }

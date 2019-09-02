@@ -1,15 +1,18 @@
 'use strict';
 
-
-/**
- * Function that responds with a 500 error
- * @function
 /**
  *
- * @param err
- * @param req
- * @param res
- * @param next
+ * Internal server error module.
+ * @module src/middleware/500
+ */
+
+
+/**
+ *
+ * @param err {object} (error object)
+ * @param req {object} (request object)
+ * @param res {object} (response object)
+ * @param next {object} (next object)
  */
 module.exports = (err, req, res, next) => {
   let error = { error: err };
