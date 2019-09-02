@@ -8,6 +8,7 @@
 * [submission PR](https://github.com/lilliangales-401-advanced-javascript/lab9-api-server/pull/1)
 * [travis](https://travis-ci.com/lilliangales-401-advanced-javascript/lab9-api-server)
 * [front-end](https://lab9-lillian.herokuapp.com/) 
+* [swagger](http://localhost:3009/api-docs)
 * [docs](https://lab9-lillian.herokuapp.com/docs)
 
 
@@ -27,6 +28,7 @@
  ### Setup
 #### `.env` requirements
 * `PORT` - 3003
+
 
 
  #### UML
