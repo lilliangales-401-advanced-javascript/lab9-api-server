@@ -145,7 +145,6 @@ describe('Categories API', () => {
         console.log('RESPONEEEEEE',response.body._id);
         return mockRequest.get(`/api/v1/categories/${response.body._id}`)
           .then(savedProduct => {
-            console.log('save PRODUCT', savedProduct.body)
             Object.keys(testProduct).forEach(key =>{
               expect(savedProduct.body[key]).toEqual(testProduct[key]);
             });

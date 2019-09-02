@@ -98,7 +98,7 @@ function handleGetOne(request,response,next) {
   request.model.get(request.params.id)
     .then( result => {
       console.log(result);
-      response.status(200).json(result[0])
+      response.status(200).json(result[0]);
     })
     .catch( next );
 }
